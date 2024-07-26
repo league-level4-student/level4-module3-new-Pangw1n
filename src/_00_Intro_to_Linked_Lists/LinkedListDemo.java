@@ -31,7 +31,26 @@ public class LinkedListDemo {
          * String nodes.
          * 
          */
-
+    	
+    	LinkedList<String> stringList = new LinkedList<String>();
+    	
+    	stringList.add("Hello");
+    	stringList.add(", ");
+    	stringList.add("World");
+    	stringList.add("!");
+    	stringList.print();
+    	stringList.remove(3);
+    	stringList.print();
+    	
+    	Node<String> node = stringList.getHead();
+    	
+    	while (node != null)
+    	{
+    		node.setValue(node.getValue().toUpperCase() + "!");
+    		node = node.getNext();
+    	}
+    	
+    	stringList.print();
     }
 
 }
