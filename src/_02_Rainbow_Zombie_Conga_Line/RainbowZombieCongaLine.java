@@ -33,17 +33,40 @@ public class RainbowZombieCongaLine {
 
     // Make the passed in zombie the first Zombie in the conga line!
     public void engine(Zombie dancer) {
-
+    	Node<Zombie> newHead = new Node<Zombie>(dancer);
+    	congaLine.getHead().setPrev(newHead);
+    	newHead.setNext(congaLine.getHead());
+    	congaLine.setHead(newHead);
     }
 
     // Make the passed in zombie the last Zombie in the conga line!
     public void caboose(Zombie dancer) {
-
+    	Node<Zombie> newTail = new Node<Zombie>(dancer);
+    	congaLine.getTail().setNext(newTail);
+    	newTail.setPrev(congaLine.getTail());
+    	congaLine.setTail(newTail);
     }
 
     // Place the zombie at the designated position in the conga line!
     public void jumpInTheLine(Zombie dancer, int position) {
-
+    	Node<Zombie> node = congaLine.getHead();
+    	Node<Zombie> newNode = new Node<Zombie>(dancer);
+    	int count = 0;
+    	while (node != null)
+    	{
+    		if (count == position)
+    		{
+    			newNode.setPrev(node.getPrev());
+    			newNode.getPrev().setNext(newNode);
+    			node.setPrev(newNode);
+    			newNode.setNext(node);
+    		}
+    		else
+    		{
+    			count++;
+    			node = node.getNext();
+    		}
+    	}
     }
 
     /*
