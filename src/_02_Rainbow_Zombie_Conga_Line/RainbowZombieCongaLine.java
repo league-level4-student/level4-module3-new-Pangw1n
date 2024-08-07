@@ -103,6 +103,7 @@ public class RainbowZombieCongaLine {
     	{
     		if (node.getValue().getZombieHatColor().equals(dancer.getZombieHatColor()))
     		{
+    			node = node.getNext();
     			congaLine.remove(count);
     		}
     		else
