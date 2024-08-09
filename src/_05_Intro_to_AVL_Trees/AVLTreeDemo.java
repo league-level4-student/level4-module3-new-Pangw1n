@@ -1,5 +1,7 @@
 package _05_Intro_to_AVL_Trees;
 
+import java.util.Scanner;
+
 import _03_Intro_to_Binary_Trees.BinaryTree;
 
 public class AVLTreeDemo {
@@ -31,7 +33,54 @@ public class AVLTreeDemo {
      */
 
     public static void main(String[] args) {
-
+    	BinaryTree<Integer> bt = new BinaryTree<Integer>();
+    	AVLTree<Integer> avlt = new AVLTree<Integer>();
+    	
+    	bt.insert(10);
+    	avlt.insert(10);
+    	
+    	bt.insert(5);
+    	avlt.insert(5);
+    	
+    	bt.insert(4);
+    	avlt.insert(4);
+    	
+    	bt.insert(3);
+    	avlt.insert(3);
+    	
+    	bt.insert(2);
+    	avlt.insert(2);
+    	
+    	bt.insert(1);
+    	avlt.insert(1);
+    	
+    	bt.insert(15);
+    	avlt.insert(15);
+    	
+    	bt.insert(16);
+    	avlt.insert(16);
+    	
+    	bt.insert(17);
+    	avlt.insert(17);
+    	
+    	bt.insert(18);
+    	avlt.insert(18);
+    	
+    	bt.insert(19);
+    	avlt.insert(19);
+    	
+    	bt.printVertical();
+    	avlt.printVertical();
+    	
+    	Scanner scanner = new Scanner(System.in);
+    	scanner.nextLine();
+    	scanner.close();
+    	
+    	bt.delete(3);
+    	avlt.delete(3);
+    	
+    	bt.printVertical();
+    	avlt.printVertical();
     }
 
 }

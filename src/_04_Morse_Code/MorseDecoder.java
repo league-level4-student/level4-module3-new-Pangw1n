@@ -71,7 +71,46 @@ public class MorseDecoder {
         String translatedString = "";
         for (String s : splitString)
         {
-        	
+        	translatedString += decodeCharacter(s);
+        }
+        System.out.println(translatedString);
+    }
+    
+    public String decodeCharacter(String value) {
+
+        Node<MorseCode> nodeQuery = recursiveFind(mcTree.getRoot(), value);
+
+        if (nodeQuery == null) {
+            return null;
+        }
+        return nodeQuery.getValue().getDecoded();
+    }
+    
+    protected Node<MorseCode> recursiveFind(Node<MorseCode> current, String value) {
+
+        if (current == null) {
+            return null;
+        } else if (compareCoded(value, current.getValue().getCoded()) == 0) {
+            return current;
+        } else if (compareCoded(value, current.getValue().getCoded()) < 0) {
+
+            return recursiveFind(current.getLeft(), value);
+        } else {
+
+            return recursiveFind(current.getRight(), value);
+        }
+
+    }
+    
+    public int compareCoded(String coded, String otherCoded) {
+        if(coded.equals(otherCoded)) {
+        	return 0;
+        }
+        else if (coded.charAt(otherCoded.length())=='-') {
+            return 1;
+        }
+        else {
+            return -1;
         }
     }
 }

@@ -16,8 +16,28 @@ public class HowManyAreSmallerThanMe {
 
     public int howManyAreSmallerThanMe(AVLTree<Integer> avlTree, int me) {
 
-        return 0;
+    	int total = recursiveFindSmaller(avlTree.getRoot(), me);
+        return total;
 
+    }
+    
+    int recursiveFindSmaller(AVLNode<Integer> current, int value)
+    {
+    	int total = 0;
+    	if (current.getValue() < value)
+    	{
+    		total = 1;
+    	}
+    	if (current.getLeft() != null)
+    	{
+    		total += recursiveFindSmaller(current.getLeft(), value);
+    	}
+    	if (current.getRight() != null)
+    	{
+    		total += recursiveFindSmaller(current.getRight(), value);
+    	}
+    	
+		return total;
     }
 
 }
